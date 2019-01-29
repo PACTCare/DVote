@@ -1,0 +1,83 @@
+.survey-title {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+}
+.survey-info {
+    color: rgba(0,0,0,0.7);
+    text-align: center;
+    font-size: 15px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.survey-wrapper {
+    height: 100vh;
+}
+
+.container {
+    height: 90px;
+    width: 300px;
+    background: rgb(236, 251, 255);
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px -6px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.container>div {
+    text-align: center;
+}
+
+.container>div:hover {
+    cursor: pointer;
+}
+
+.left {
+    background: var(--brand-purple);
+}
+
+.right {
+    background: var(--brand-blue);
+}
+
+.text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.option-title {
+    color: rgba(255, 255, 255, 1);
+    font-size: 22px;
+}
+
+.option-size {
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+}
+
+.stats-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 13px;
+}
+.host-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 13px;
+}

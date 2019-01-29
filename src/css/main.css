@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+    user-select: none;
+    background: linear-gradient(135deg, #2a99ef 20%, #52d9e5 80%); 
+}
+form > input, button {
+    font-family: 'Roboto Slab', serif;
+}
+
+:root {
+    --brand-purple: rgb(192, 102, 177);
+    --brand-blue: rgb(97, 165, 255);
+}

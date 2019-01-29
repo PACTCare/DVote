@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DVote - Distributed Voting Dapp</title>
+</head>
+
+<body>
+    <!-- Create Voting  -->
+    <div id='divCreateLayout' class="form-wrapper">
+        <div class="form-container">
+            <h1 class="logo"><span class="blu">D</span><span class="purp">Vote</span></h1>
+            <p class="subtitle">Your IOTA survey address:</p>
+            <form>
+                <input type="text" readonly="readonly" name="host" id="iotaAddress" class="form-input" placeholder="IOTA address"
+                    required>
+                <br> <br>
+                <hr style="border-top: black; width: 50%;"><br>
+                <input type="text" name="survey-title" id="survey-title" class="form-input" placeholder="survey-title"
+                    required>
+                <br><br>
+                <input type="text" name="optionA" id="optionA" class="form-input" placeholder="Option A" maxlength="15"
+                    required>
+                <br><br>
+                <input type="text" name="optionB" id="optionB" class="form-input" placeholder="Option B" maxlength="15"
+                    required>
+                <br><br>
+                <button type="submit" id='createSruvey' class="btn-submit">Create Survey</submit>
+            </form>
+        </div>
+    </div>
+
+    <!-- Vote -->
+    <div id='divVoteLayout' class="survey-wrapper">
+        <h1 class="survey-title" id="titleSurvey">Title of Survey</h1>
+        <p class="survey-info">Click on the desired side to vote. <br>
+            Share the above URL with others to let them vote.</p>
+        <div class="container" id="voting-box">
+            <div class="left" id='leftClick'>
+                <div class="text">
+                    <span class="option-size" id="size-one"></span>
+                    <br>
+                    <span class="option-title" id="optA"></span>
+                </div>
+            </div>
+            <div class="right" id='rightClick'>
+                <div class="text">
+                    <span class="option-size" id="size-two"></span>
+                    <br>
+                    <span class="option-title" id="optB"></span>
+                </div>
+            </div>
+        </div>
+        <div class="stats-container">
+            <span id="left-label"></span>:
+            <span id="total-left"></span>
+            <br>
+            <span id="right-label"></span>:
+            <span id="total-right"></span>
+            <br>
+            <span id="total-votes"></span>
+            <br>
+            <span id="signature"></span>
+        </div>
+        <div class="host-container">
+            <span id="host-name"></span>
+        </div>
+    </div>
+</body>
+
+</html>

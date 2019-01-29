@@ -1,0 +1,67 @@
+#iotaAddress {
+    background: #ededed
+ }
+
+.form-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form-container {
+    min-height: 250px;
+    background: rgb(255,255,255);
+    padding: 20px 30px 30px 30px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.2);
+}
+
+
+.logo {
+    margin-bottom:10px;
+}
+.subtitle {
+    color: rgba(0,0,0,0.7);
+    font-weight: 200;
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.blu {
+    color: var(--brand-blue);
+}
+.purp {
+    color: var(--brand-purple);
+}
+.form-input {
+    padding: 10px;
+    width: 270px;
+    border-radius: 3px;
+    border: 1px solid rgb(214, 230, 253);
+    background: rgb(245, 249, 255);
+    text-align: center;
+}
+.form-input::placeholder {
+    color: rgba(0,0,0,0.3);
+}
+.btn-submit {
+    padding: 9px;
+    width: 290px;
+    border-radius: 3px;
+    border: 0;
+    font-size: 15px;
+    color: rgb(255,255,255);
+    background-color:rgba(192, 102, 177,0.8);
+    border: 1px solid var(--brand-purple);
+    transition: 0.2s ease;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+}
+.btn-submit:hover {
+    cursor: pointer;
+    background-color:var(--brand-purple);
+    transition: 0.3s ease;
+}

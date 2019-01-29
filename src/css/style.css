@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+}
+
+.form-wrapper {
+    height: 100vh;
+}
+
+/* ----------------------------------------------------------- */
+
+.survey-wrapper {
+    height: 100vh;
+}
+
+.container {
+    height: 100px;
+    width: 300px;
+    background: rgb(236, 251, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px -6px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.container>div {
+    text-align: center;
+}
+
+.container>div:hover {
+    cursor: pointer;
+}
+
+.left {
+    background: rgb(192, 102, 177);
+}
+
+.right {
+    background: rgb(97, 165, 255);
+}
+
+.text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+.option-title {
+    color: rgba(255, 255, 255, 1);
+}
+
+.option-size {
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+}
+
+.stats-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 13px;
+    user-select: none;
+}
