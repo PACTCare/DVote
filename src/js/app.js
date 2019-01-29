@@ -7,6 +7,8 @@ import getURLParameter from './helperFunctions/getURLParameter';
 import Signature from './crypto/Signature';
 
 const iota = new Iota();
+const voteA = 'A';
+const voteB = 'B';
 
 let pointA = 1;
 let pointB = 1;
@@ -42,7 +44,9 @@ function setup(aVotes = 0, bVotes = 0) {
   updatePoints();
 }
 
-// new functions!
+/**
+ * Create survey layout
+ */
 function createSurvey() {
   const address = iota.generateSurveyAddress();
   document.getElementById('divVoteLayout').style.display = 'none';
@@ -58,6 +62,28 @@ function createSurvey() {
   });
 }
 
+/**
+ * Send signed vote to IOTA
+ * @param {String} publicHexKey
+ * @param {Object} sig
+ * @param {Object} keys
+ * @param {String} urliotaAdd
+ * @param {String} voteLetter
+ */
+async function vote(publicHexKey, sig, keys, urliotaAdd, voteLetter) {
+  const voteObj = { time: new Date().toLocaleString(), vote: voteLetter, publicKey: publicHexKey };
+  const signature = await sig.sign(keys.privateKey, JSON.stringify(voteObj));
+  voteObj.signature = btoa(String.fromCharCode(...new Uint8Array(signature)));
+  iota.vote(urliotaAdd, voteObj);
+}
+
+/**
+ * Create vote layout
+ * @param {String} urliotaAdd
+ * @param {String} urltitle
+ * @param {String} urloptA
+ * @param {String} urloptB
+ */
 async function voteLayout(urliotaAdd, urltitle, urloptA, urloptB) {
   const sig = new Signature();
   const keys = await sig.getKeys();
@@ -74,17 +100,15 @@ async function voteLayout(urliotaAdd, urltitle, urloptA, urloptB) {
     let bVotes = 0;
     for (let j = 0; j < messages.length; j += 1) {
       const mesSignature = messages[j].signature;
-      console.log(messages[j]);
       delete messages[j].signature;
       // eslint-disable-next-line no-await-in-loop
       const isVerified = await sig.verify(await sig.importPublicKey(messages[j].publicKey),
         mesSignature,
         JSON.stringify(messages[j]));
-      console.log(isVerified);
       if (isVerified) {
-        if (messages[j].vote === 'A') {
+        if (messages[j].vote === voteA) {
           aVotes += 1;
-        } else if (messages[j].vote === 'B') {
+        } else if (messages[j].vote === voteB) {
           bVotes += 1;
         }
       }
@@ -100,21 +124,18 @@ async function voteLayout(urliotaAdd, urltitle, urloptA, urloptB) {
   document.getElementById('left-label').textContent = urloptA;
   document.getElementById('right-label').textContent = urloptB;
   document.getElementById('leftClick').addEventListener('click', async () => {
-    const voteObj = { time: new Date().toLocaleString(), vote: 'A', publicKey: publicHexKey };
-    const signature = await sig.sign(keys.privateKey, JSON.stringify(voteObj));
-    voteObj.signature = btoa(String.fromCharCode(...new Uint8Array(signature)));
-    iota.vote(urliotaAdd, voteObj);
+    await vote(publicHexKey, sig, keys, urliotaAdd, voteA);
     addleft();
   });
   document.getElementById('rightClick').addEventListener('click', async () => {
-    const voteObj = { time: new Date().toLocaleString(), vote: 'B', publicKey: publicHexKey };
-    const signature = await sig.sign(keys.privateKey, JSON.stringify(voteObj));
-    voteObj.signature = btoa(String.fromCharCode(...new Uint8Array(signature)));
-    iota.vote(urliotaAdd, voteObj);
+    await vote(publicHexKey, sig, keys, urliotaAdd, voteB);
     addright();
   });
 }
 
+/**
+ * Initialize layout
+ */
 async function initLayout() {
   await iota.nodeInitialization();
   const urliotaAdd = getURLParameter('iotaAdd');
@@ -127,7 +148,7 @@ async function initLayout() {
     && typeof urloptB !== 'undefined') {
     voteLayout(urliotaAdd, urltitle, urloptA, urloptB);
   } else {
-    createSurvey(iota);
+    createSurvey();
   }
 }
 
